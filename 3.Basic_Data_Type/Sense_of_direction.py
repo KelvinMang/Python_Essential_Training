@@ -28,20 +28,25 @@ class TerminalScribe:
         self.canvas = canvas
         self.trail = '.'
         self.mark = '*'
-        self.framerate = 0.2
+        self.framerate = 0.1
         self.pos = [0, 0]
         self.direction = [0,1]
     
     def setdegree(self,angle):
-        radian = (angle/180)*math.pi
-        self.direction = [math.sin(radian),-math.cos(radian)]
+        radians = ((angle)/180)*math.pi
+        self.direction = [math.sin(radians),-math.cos(radians)]
+    
+    def forward(self):
+        pos = [self.pos[0]+ self.direction[0], self.pos[1]+self.direction[1]]
+        if not self.canvas.hitsWall(pos):
+         self.draw(pos)
 
     def up(self):
-        self.direction = [0,1]
+        self.direction = [0,-1]
         self.forward()
 
     def down(self):
-        self.direction = [0,-1]
+        self.direction = [0,1]
         self.forward()
 
     def right(self):
@@ -69,21 +74,14 @@ class TerminalScribe:
         for num in range(size-1):
             self.up()
 
-    def forward(self):
-        pos = [self.pos[0]+ self.direction[0], self.pos[1]+self.direction[1]]
-        if not self.canvas.hitsWall(pos):
-            self.draw(pos)
-    
-
-
-
-
-        
 
 size = int(input("What is the size of the square? "))
 angle = int (input("What's the direction? "))
 canvas = Canvas(30,30)
 scribe = TerminalScribe(canvas)
 scribe.setdegree(angle)
+
 for i in range(size):
     scribe.forward()
+
+
