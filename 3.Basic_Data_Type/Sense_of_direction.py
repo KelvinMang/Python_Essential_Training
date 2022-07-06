@@ -29,7 +29,8 @@ class TerminalScribe:
         self.trail = '.'
         self.mark = '*'
         self.framerate = 0.1
-        self.pos = [0, 0]
+        #This set the plot starts in the middle of the canvas, so we can plot the direction in 360 degrees
+        self.pos = [canvas._x/2,canvas._y/2]  
         self.direction = [0,1]
     
     def setdegree(self,angle):
