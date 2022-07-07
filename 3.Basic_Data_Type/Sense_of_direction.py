@@ -82,6 +82,7 @@ canvas = Canvas(30,30)
 scribe = TerminalScribe(canvas)
 scribe.setdegree(angle)
 
+
 for i in range(size):
     scribe.forward()
 
