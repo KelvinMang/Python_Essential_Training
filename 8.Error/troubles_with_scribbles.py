@@ -56,7 +56,8 @@ class CanvasAxis(Canvas):
         self.clear()
         for y in range(self._y):
             print(self.formatAxisNumber(y) + ' '.join([col[y] for col in self._canvas]))
-    
+
+# If val is a float (number) then return true, if not return false
 def is_number(val):
     try:
         float(val)
