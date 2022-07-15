@@ -117,6 +117,7 @@ class TerminalScribe:
     def setPosition(self, pos):
         def _setPosition(self, pos, _):
             self.pos = pos
+        # append tuple into list -> list[(tuple)]
         self.moves.append((_setPosition, [self, pos]))
 
     def setDirection(self, direction):
